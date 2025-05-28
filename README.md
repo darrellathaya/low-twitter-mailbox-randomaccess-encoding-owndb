@@ -104,6 +104,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 
 6. Schema Evolution
+
    a. Adding column
    ```sh
    java -cp ".:lib/*" SchemaEvolver add <new_column_name> <value>
