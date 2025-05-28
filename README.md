@@ -105,19 +105,19 @@ To get a local copy up and running follow these simple example steps.
 
 6. Schema Evolution
    a. Adding column
-       ```sh
-       java -cp ".:lib/*" SchemaEvolver add <new_column_name> <value>
-       ```
+   ```sh
+   java -cp ".:lib/*" SchemaEvolver add <new_column_name> <value>
+   ```
    
    b. Renaming Column
-       ```sh
-       java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
-       ```
+   ```sh
+   java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
+   ```
    
     c. Removing Column
-       ```sh
-       java -cp ".:lib/*" SchemaEvolver remove <column_name>
-       ```
+   ```sh
+   java -cp ".:lib/*" SchemaEvolver remove <column_name>
+   ```
 
 <!-- DIRECTORY -->
 ## Project Directory
