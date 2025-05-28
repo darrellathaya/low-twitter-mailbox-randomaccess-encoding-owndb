@@ -71,36 +71,26 @@ The main goals of this project are to demonstrate:
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/darrellathaya/low-twitter-mailbox-randomaccess-encoding-owndb.git
    ```
-
-## Project Directory
-low-twitter-mailbox-randomaccess-encoding-owndb/
-├── lib/
-│ ├── msgpack-core-0.9.8.jar
-│ ├── jackson-databind-2.15.3.jar
-│ └── ...
-├── data/
-│ ├── hot/
-│ └── cold/
-├── users/
-├── Post.java
-├── PostWithCustomDate.java
-├── Follow.java
-├── Timeline.java
-├── SchemaEvolver.java
-
-
+2. Download modules needed
+   ```sh
+   wget https://repo1.maven.org/maven2/org/msgpack/msgpack-core/0.9.8/msgpack-core-0.9.8.jar
+   wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar
+   wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar
+   wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar
+   ```
+3. Compile all java files
+   ```sh
+   javac -cp ".:lib/*" *.java
+   ```
+   
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -149,6 +139,24 @@ Use this space to show useful examples of how a project can be used. Additional 
        java -cp ".:lib/*" SchemaEvolver remove <column_name>
        ```
 
+## Project Directory
+```sh
+low-twitter-mailbox-randomaccess-encoding-owndb/
+├── lib/
+│ ├── msgpack-core-0.9.8.jar
+│ ├── jackson-databind-2.15.3.jar
+│ └── ...
+├── data/
+│ ├── hot/
+│ └── cold/
+├── users/
+├── Post.java
+├── PostWithCustomDate.java
+├── Follow.java
+├── Timeline.java
+├── SchemaEvolver.java
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -167,3 +175,9 @@ Use this space to show useful examples of how a project can be used. Additional 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/darrellathaya
 [product-screenshot]: images/screenshot.png
+[Java.io]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
+[MsgPack.io]: https://img.shields.io/badge/MessagePack-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxwYXRoIGQ9Ik0xMiAyYTkgOSAwIDEgMCAwIDE4IDkgOSAwIDAgMCAwLTE4em0xIDEzSDExdi0yaDJ2MnptMC00SDExVjZoMnY1eiIvPjwvc3ZnPg==
+[Jackson.io]: https://img.shields.io/badge/Jackson-2F3134?style=for-the-badge&logo=jackson&logoColor=white
+[Java-url]: https://www.java.com/
+[MsgPack-url]: https://msgpack.org/
+[Jackson-url]: https://github.com/FasterXML/jackson
