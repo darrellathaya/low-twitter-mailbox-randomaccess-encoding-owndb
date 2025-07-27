@@ -4,11 +4,14 @@
 ![MessagePack](https://img.shields.io/badge/MessagePack-8B4513?style=for-the-badge)
 ![Jackson](https://img.shields.io/badge/Jackson-3E7EBF?style=for-the-badge)
 
+
 ## Project Description
 
 **Twitter Data Storage** is a simplified replica of Twitter's message backend architecture, built entirely in Java. It simulates a microblogging system that implements core backend mechanics such as message posting, timeline generation, user relationships, and dynamic data schema management.
 
 The system is powered by a **mailbox-based design**, enabling each user to have a dedicated data stream for efficient message handling. It uses **random-access file storage**, **custom binary encoding (MessagePack)**, and a **fully self-managed database system** with no external relational database dependency. Schema changes and data migration are handled directly within the system, showcasing the flexibility of the architecture.
+
+---
 
 ## Features
 
@@ -20,7 +23,7 @@ The system is powered by a **mailbox-based design**, enabling each user to have 
 - **Schema evolution support** (add/rename/remove fields dynamically)  
 - **Hot and cold data storage** separation to optimize performance and archival  
 
-
+---
 
 ## Technologies Used
 
@@ -28,7 +31,7 @@ The system is powered by a **mailbox-based design**, enabling each user to have 
 - **MessagePack** — Efficient binary serialization format  
 - **Jackson** — JSON data handling and schema evolution support  
 
-
+---
 
 ## Getting Started
 
@@ -40,7 +43,7 @@ Make sure the following software is installed:
 - Git
 - *(Optional)* Flutter SDK — only needed if planning to add a mobile frontend
 
-
+---
 
 ### Installation and Setup
 
@@ -68,7 +71,7 @@ Make sure the following software is installed:
    javac -cp ".:lib/*" *.java
    ```
 
-
+---
 
 ## Usage Guide
 
@@ -102,7 +105,7 @@ java -cp ".:lib/*" ShowAllTweets
 java -cp ".:lib/*" SearchTweetsByDate <start_date> <end_date>
 ```
 
-
+---
 
 ## Schema Evolution
 
@@ -123,7 +126,7 @@ java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
 java -cp ".:lib/*" SchemaEvolver remove <column_name>
 ```
 
-
+---
 
 ## Project Structure
 
@@ -143,7 +146,7 @@ low-twitter-mailbox-randomaccess-encoding-owndb/
 ├── SchemaEvolver.java      # Schema evolution controller
 ```
 
-
+---
 
 ## License
 
