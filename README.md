@@ -132,18 +132,40 @@ java -cp ".:lib/*" SchemaEvolver remove <column_name>
 
 ```
 low-twitter-mailbox-randomaccess-encoding-owndb/
-├── lib/                    # External libraries (MessagePack, Jackson)
-├── data/
-│   ├── hot/                # Hot storage (recently posted tweets)
-│   └── cold/               # Cold storage (archived tweets)
-├── users/                  # Mailboxes and user relationship data
-├── Post.java               # Command to post a message
-├── PostWithCustomDate.java
-├── Follow.java             # User following logic
-├── Timeline.java           # Timeline generation engine
-├── ShowAllTweets.java      # Aggregated tweet viewer
-├── SearchTweetsByDate.java # Date-range tweet search
-├── SchemaEvolver.java      # Schema evolution controller
+├── data/                            # Hot/cold tweet storage directory
+├── lib/                             # External .jar libraries (MessagePack, Jackson)
+├── users/
+│   └── user1/                       # Example user mailbox directory
+│
+├── Follow.java                      # Follower relationship logic
+├── Follow.class
+│
+├── Post.java                        # Post a tweet with current timestamp
+├── Post.class
+│
+├── PostWithCustomDate.java          # Post a tweet with custom date
+├── PostWithCustomDate.class
+│
+├── Timeline.java                    # Generate a user's timeline
+├── Timeline.class
+│
+├── ShowAllTweets.java               # Print all tweets (hot and cold)
+├── ShowAllTweets.class
+│
+├── SearchTweetsByDate.java          # Query tweets within a date range
+├── SearchTweetsByDate.class
+│
+├── SchemaEvolver.java               # CLI for evolving schema (add, rename, remove fields)
+├── SchemaEvolver.class
+├── SchemaEvolver$EvolutionFunction.class
+│
+├── HotColdManager.java              # Manages tweet movement between hot and cold storage
+├── HotColdManager.class
+│
+├── Tweet.java                       # Tweet object structure and serialization
+├── Tweet.class
+│
+├── README.md                        # Project documentation
 ```
 
 
