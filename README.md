@@ -1,165 +1,141 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+# Twitter Data Storage
 
+Is a lightweight replication of a Twitter-like message storage system built in Java. It features user messaging, timelines, follower relationships, hot/cold storage, and schema evolution capabilities, all using a custom database approach with MessagePack and Jackson for serialization.
 
+---
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+## Project Overview
 
+This project explores how a simplified Twitter-style system can be implemented with support for:
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+- **Random-access storage** with MsgPack encoding  
+- **Custom timeline generation**  
+- **User following relationships**  
+- **Schema evolution** (adding, renaming, and removing fields)  
+- **Hot vs. cold data segregation** for storage optimization  
 
-This project is a simulation of a simple Java-based tweet storage system, using a multifile approach with `MessagePack` storage format for hot data and `JSON Lines (.jsonl)` for cold data.
+The application logic is written in Java and structured for command-line execution, simulating core backend functionality of a social microblogging platform.
 
-The main goals of this project are to demonstrate:
-- How to store and read tweets in an efficient format
-- Managing hot and cold data based on date
-- Implementing schema evolution (add columns, rename, change types, delete columns)
-- Simulating basic social media such as timeline and follow
+---
 
-<!-- BUILD -->
-## Built With
-
-* [![Java][Java.io]][Java-url]
-* [![MessagePack][MsgPack.io]][MsgPack-url]
-* [![Jackson][Jackson.io]][Jackson-url]
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
+Follow the instructions below to set up and run the project locally.
 
-<!-- INSTALLATION -->
-### Installation
-1. Clone the repo
+### Prerequisites
+
+Ensure you have the following installed:
+
+- **Java Development Kit (JDK)**  
+- **Git**  
+- (Optional) **Flutter SDK** — if you're integrating a front-end
+
+---
+
+### Installation & Setup
+
+1. **Clone the Repository**
    ```sh
    git clone https://github.com/darrellathaya/low-twitter-mailbox-randomaccess-encoding-owndb.git
+   cd low-twitter-mailbox-randomaccess-encoding-owndb
    ```
-2. Download modules needed
+
+2. **Download Required Libraries**  
+   Create a `lib/` directory and download the required `.jar` dependencies:
    ```sh
+   mkdir lib
+   cd lib
    wget https://repo1.maven.org/maven2/org/msgpack/msgpack-core/0.9.8/msgpack-core-0.9.8.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar
+   cd ..
    ```
-3. Compile all java files
+
+3. **Compile Java Source Files**
    ```sh
    javac -cp ".:lib/*" *.java
    ```
 
-   
-<!-- USAGE EXAMPLES -->
-## Usage
+---
 
-1. Posting a message
-   ```sh
-   java -cp ".:lib/*" Post <user> "<message>"
-   ```
-   
-2. Posting yesterday's message
-   ```sh
-   java -cp ".:lib/*" PostWithCustomDate <user> "<message>"
-   ```
+## Usage Guide
 
-3. Follow other users
-   ```sh
-   java -cp ".:lib/*" Follow user1 user2
-   ```
-   
-4. Viewing user timeline
-   ```sh
-   java -cp ".:lib/*" Timeline <user>
-   ```
-   
-5. Viewing timeline entirety (Hot + Cold)
-   ```sh
-   java -cp ".:lib/*" ShowAllTweets
-   ```
+Use the following commands to interact with the system:
 
-5. Find tweet based on date range
-   ```sh
-   java -cp ".:lib/*" SearchTweetsByDate <date_start> <date_end>
-   ```
-
-6. Schema Evolution
-
-   a. Adding column
-   ```sh
-   java -cp ".:lib/*" SchemaEvolver add <new_column_name> <value>
-   ```
-   
-   b. Renaming Column
-   ```sh
-   java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
-   ```
-   
-    c. Removing Column
-   ```sh
-   java -cp ".:lib/*" SchemaEvolver remove <column_name>
-   ```
-
-<!-- DIRECTORY -->
-## Project Directory
+### 1. Post a Message
 ```sh
-low-twitter-mailbox-randomaccess-encoding-owndb/
-├── lib/
-│ ├── msgpack-core-0.9.8.jar
-│ ├── jackson-databind-2.15.3.jar
-│ └── ...
-├── data/
-│ ├── hot/
-│ └── cold/
-├── users/
-├── Post.java
-├── PostWithCustomDate.java
-├── Follow.java
-├── Timeline.java
-├── SchemaEvolver.java
+java -cp ".:lib/*" Post <user> "<message>"
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### 2. Post a Message with a Custom Date
+```sh
+java -cp ".:lib/*" PostWithCustomDate <user> "<message>"
+```
 
+### 3. Follow a User
+```sh
+java -cp ".:lib/*" Follow <follower> <followee>
+```
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/darrellathaya/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/darrellathaya/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/darrellathaya/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/darrellathaya/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/darrellathaya/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/darrellathaya
-[product-screenshot]: images/screenshot.png
-[Java.io]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
-[MsgPack.io]: https://img.shields.io/badge/MessagePack-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxwYXRoIGQ9Ik0xMiAyYTkgOSAwIDEgMCAwIDE4IDkgOSAwIDAgMCAwLTE4em0xIDEzSDExdi0yaDJ2MnptMC00SDExVjZoMnY1eiIvPjwvc3ZnPg==
-[Jackson.io]: https://img.shields.io/badge/Jackson-2F3134?style=for-the-badge&logo=jackson&logoColor=white
-[Java-url]: https://www.java.com/
-[MsgPack-url]: https://msgpack.org/
-[Jackson-url]: https://github.com/FasterXML/jackson
+### 4. View Timeline for a User
+```sh
+java -cp ".:lib/*" Timeline <user>
+```
+
+### 5. View All Tweets (Hot + Cold Storage)
+```sh
+java -cp ".:lib/*" ShowAllTweets
+```
+
+### 6. Search Tweets by Date Range
+```sh
+java -cp ".:lib/*" SearchTweetsByDate <start_date> <end_date>
+```
+
+---
+
+## Schema Evolution
+
+Modify the data schema dynamically using the following commands:
+
+### a. Add a New Column
+```sh
+java -cp ".:lib/*" SchemaEvolver add <new_column_name> <default_value>
+```
+
+### b. Rename an Existing Column
+```sh
+java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
+```
+
+### c. Remove a Column
+```sh
+java -cp ".:lib/*" SchemaEvolver remove <column_name>
+```
+
+---
+
+## Project Structure
+
+```plaintext
+low-twitter-mailbox-randomaccess-encoding-owndb/
+├── lib/                  # External .jar libraries (MsgPack, Jackson)
+├── data/
+│   ├── hot/              # Recently posted (hot) tweet data
+│   └── cold/             # Archived (cold) tweet data
+├── users/                # User data and relationships
+├── Post.java             # Post a new message
+├── PostWithCustomDate.java
+├── Follow.java           # Handle user following
+├── Timeline.java         # Display a user's timeline
+├── SchemaEvolver.java    # Handles schema evolution commands
+```
+
+---
+
+## Technologies Used
+
+- **Java** (Core language)  
+- **MessagePack** (Efficient binary serialization)  
+- **Jackson** (JSON handling and serialization)  
