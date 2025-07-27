@@ -10,7 +10,7 @@
 
 This project is intended for backend architecture experimentation, with a focus on custom binary storage formats and dynamic schema handling.
 
----
+
 
 ## Features
 
@@ -20,7 +20,7 @@ This project is intended for backend architecture experimentation, with a focus 
 - **Schema evolution**: add, rename, and remove fields dynamically  
 - **Hot and cold storage separation** for performance optimization  
 
----
+
 
 ## Technologies Used
 
@@ -28,7 +28,7 @@ This project is intended for backend architecture experimentation, with a focus 
 - **MessagePack** — Compact binary serialization for tweet storage  
 - **Jackson** — Handles object mapping and JSON processing  
 
----
+
 
 ## Getting Started
 
@@ -40,7 +40,7 @@ Make sure the following tools are installed on your machine:
 - Git
 - *(Optional)* Flutter SDK — required only if integrating with a mobile frontend in the future
 
----
+
 
 ### Installation and Setup
 
@@ -68,7 +68,7 @@ Make sure the following tools are installed on your machine:
    javac -cp ".:lib/*" *.java
    ```
 
----
+
 
 ## Usage Guide
 
@@ -104,7 +104,7 @@ java -cp ".:lib/*" ShowAllTweets
 java -cp ".:lib/*" SearchTweetsByDate <start_date> <end_date>
 ```
 
----
+
 
 ## Schema Evolution Commands
 
@@ -125,7 +125,7 @@ java -cp ".:lib/*" SchemaEvolver rename <old_name> <new_name>
 java -cp ".:lib/*" SchemaEvolver remove <column_name>
 ```
 
----
+
 
 ## Project Structure
 
@@ -145,7 +145,7 @@ low-twitter-mailbox-randomaccess-encoding-owndb/
 ├── SchemaEvolver.java      # Handles schema evolution actions
 ```
 
----
+
 
 ## License
 
