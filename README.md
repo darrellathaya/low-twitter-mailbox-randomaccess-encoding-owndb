@@ -10,9 +10,6 @@
 
 The system is powered by a **mailbox-based design**, enabling each user to have a dedicated data stream for efficient message handling. It uses **random-access file storage**, **custom binary encoding (MessagePack)**, and a **fully self-managed database system** with no external relational database dependency. Schema changes and data migration are handled directly within the system, showcasing the flexibility of the architecture.
 
-
-
-
 ## Features
 
 - **Mailbox architecture** for scalable per-user data streams  
