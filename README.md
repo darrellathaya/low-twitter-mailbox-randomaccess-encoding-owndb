@@ -1,59 +1,70 @@
 # Twitter Data Storage
 
-Is a lightweight replication of a Twitter-like message storage system built in Java. It features user messaging, timelines, follower relationships, hot/cold storage, and schema evolution capabilities, all using a custom database approach with MessagePack and Jackson for serialization.
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![MessagePack](https://img.shields.io/badge/MessagePack-8B4513?style=for-the-badge)
+![Jackson](https://img.shields.io/badge/Jackson-3E7EBF?style=for-the-badge)
+
+## Project Description
+
+**Twitter Data Storage** is a lightweight simulation of a Twitter-like backend system built in Java. It implements essential features of a microblogging platform, including message posting, user timelines, follower relationships, hot/cold storage separation, and schema evolution — all handled through a custom storage layer using MessagePack and Jackson.
+
+This project is intended for backend architecture experimentation, with a focus on custom binary storage formats and dynamic schema handling.
 
 ---
 
-## Project Overview
+## Features
 
-This project explores how a simplified Twitter-style system can be implemented with support for:
+- **Random-access storage** using MessagePack serialization  
+- **Custom timeline generation** per user  
+- **User following and follower mapping**  
+- **Schema evolution**: add, rename, and remove fields dynamically  
+- **Hot and cold storage separation** for performance optimization  
 
-- **Random-access storage** with MsgPack encoding  
-- **Custom timeline generation**  
-- **User following relationships**  
-- **Schema evolution** (adding, renaming, and removing fields)  
-- **Hot vs. cold data segregation** for storage optimization  
+---
 
-The application logic is written in Java and structured for command-line execution, simulating core backend functionality of a social microblogging platform.
+## Technologies Used
+
+- **Java** — Core language used to build the CLI application  
+- **MessagePack** — Compact binary serialization for tweet storage  
+- **Jackson** — Handles object mapping and JSON processing  
 
 ---
 
 ## Getting Started
 
-Follow the instructions below to set up and run the project locally.
-
 ### Prerequisites
 
-Ensure you have the following installed:
+Make sure the following tools are installed on your machine:
 
-- **Java Development Kit (JDK)**  
-- **Git**  
-- (Optional) **Flutter SDK** — if you're integrating a front-end
+- Java Development Kit (JDK)
+- Git
+- *(Optional)* Flutter SDK — required only if integrating with a mobile frontend in the future
 
 ---
 
-### Installation & Setup
+### Installation and Setup
 
 1. **Clone the Repository**
-   ```sh
+   ```bash
    git clone https://github.com/darrellathaya/low-twitter-mailbox-randomaccess-encoding-owndb.git
    cd low-twitter-mailbox-randomaccess-encoding-owndb
    ```
 
-2. **Download Required Libraries**  
-   Create a `lib/` directory and download the required `.jar` dependencies:
-   ```sh
-   mkdir lib
-   cd lib
+2. **Download Dependencies**
+   Create a `lib/` folder and fetch the required libraries:
+   ```bash
+   mkdir lib && cd lib
+
    wget https://repo1.maven.org/maven2/org/msgpack/msgpack-core/0.9.8/msgpack-core-0.9.8.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar
    wget https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar
+
    cd ..
    ```
 
-3. **Compile Java Source Files**
-   ```sh
+3. **Compile the Source Code**
+   ```bash
    javac -cp ".:lib/*" *.java
    ```
 
@@ -61,56 +72,56 @@ Ensure you have the following installed:
 
 ## Usage Guide
 
-Use the following commands to interact with the system:
+Run the following commands to interact with the system:
 
-### 1. Post a Message
-```sh
-java -cp ".:lib/*" Post <user> "<message>"
+### Post a New Message
+```bash
+java -cp ".:lib/*" Post <username> "<message>"
 ```
 
-### 2. Post a Message with a Custom Date
-```sh
-java -cp ".:lib/*" PostWithCustomDate <user> "<message>"
+### Post with a Custom Timestamp
+```bash
+java -cp ".:lib/*" PostWithCustomDate <username> "<message>"
 ```
 
-### 3. Follow a User
-```sh
+### Follow a User
+```bash
 java -cp ".:lib/*" Follow <follower> <followee>
 ```
 
-### 4. View Timeline for a User
-```sh
-java -cp ".:lib/*" Timeline <user>
+### View Timeline
+```bash
+java -cp ".:lib/*" Timeline <username>
 ```
 
-### 5. View All Tweets (Hot + Cold Storage)
-```sh
+### Show All Tweets (Hot + Cold Storage)
+```bash
 java -cp ".:lib/*" ShowAllTweets
 ```
 
-### 6. Search Tweets by Date Range
-```sh
+### Search Tweets by Date Range
+```bash
 java -cp ".:lib/*" SearchTweetsByDate <start_date> <end_date>
 ```
 
 ---
 
-## Schema Evolution
+## Schema Evolution Commands
 
-Modify the data schema dynamically using the following commands:
+The system supports runtime schema changes without breaking compatibility.
 
-### a. Add a New Column
-```sh
-java -cp ".:lib/*" SchemaEvolver add <new_column_name> <default_value>
+### Add a Column
+```bash
+java -cp ".:lib/*" SchemaEvolver add <column_name> <default_value>
 ```
 
-### b. Rename an Existing Column
-```sh
-java -cp ".:lib/*" SchemaEvolver rename <old_column_name> <new_column_name>
+### Rename a Column
+```bash
+java -cp ".:lib/*" SchemaEvolver rename <old_name> <new_name>
 ```
 
-### c. Remove a Column
-```sh
+### Remove a Column
+```bash
 java -cp ".:lib/*" SchemaEvolver remove <column_name>
 ```
 
@@ -118,24 +129,24 @@ java -cp ".:lib/*" SchemaEvolver remove <column_name>
 
 ## Project Structure
 
-```plaintext
+```
 low-twitter-mailbox-randomaccess-encoding-owndb/
-├── lib/                  # External .jar libraries (MsgPack, Jackson)
+├── lib/                    # External libraries (.jar files)
 ├── data/
-│   ├── hot/              # Recently posted (hot) tweet data
-│   └── cold/             # Archived (cold) tweet data
-├── users/                # User data and relationships
-├── Post.java             # Post a new message
+│   ├── hot/                # Recently posted (hot) tweet data
+│   └── cold/               # Archived (cold) tweet data
+├── users/                  # User information and follower data
+├── Post.java               # CLI for posting new messages
 ├── PostWithCustomDate.java
-├── Follow.java           # Handle user following
-├── Timeline.java         # Display a user's timeline
-├── SchemaEvolver.java    # Handles schema evolution commands
+├── Follow.java             # Handles follow relationships
+├── Timeline.java           # Generates a user's timeline
+├── ShowAllTweets.java      # Aggregates all stored tweets
+├── SearchTweetsByDate.java # Filters tweets by date
+├── SchemaEvolver.java      # Handles schema evolution actions
 ```
 
 ---
 
-## Technologies Used
+## License
 
-- **Java** (Core language)  
-- **MessagePack** (Efficient binary serialization)  
-- **Jackson** (JSON handling and serialization)  
+This project is open-source and available under the MIT License.
